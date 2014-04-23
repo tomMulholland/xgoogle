@@ -322,7 +322,8 @@ class BlogSearch(GoogleSearch):
         return {'from': int(matches.group(1)), 'to': int(matches.group(2)), 'total': int(matches.group(3))}
 
     def _extract_results(self, soup):
-        results = soup.findAll('p', {'class': 'g'})
+        #results = soup.findAll('p', {'class': 'g'})
+        results = soup.findAll('li','g')
         ret_res = []
         for result in results:
             eres = self._extract_result(result)
@@ -352,7 +353,8 @@ class BlogSearch(GoogleSearch):
         return title, url
 
     def _extract_description(self, result):
-        desc_td = result.findNext('td')
+        #desc_td = result.findNext('td')
+        desc_div = result.find('span', 'st'))
         if not desc_td:
             self._maybe_raise(ParseError, "Description tag in Google search result was not found", result)
             return None
