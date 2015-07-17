@@ -354,7 +354,7 @@ class BlogSearch(GoogleSearch):
 
     def _extract_description(self, result):
         #desc_td = result.findNext('td')
-        desc_div = result.find('span', 'st'))
+        desc_div = result.find('span', 'st')
         if not desc_td:
             self._maybe_raise(ParseError, "Description tag in Google search result was not found", result)
             return None
